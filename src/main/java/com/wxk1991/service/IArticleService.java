@@ -3,7 +3,7 @@ package com.wxk1991.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.wxk1991.entity.Article;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.wxk1991.vo.ArticleVO;
+import com.wxk1991.vo.ArticleVo;
 
 /**
  * <p>
@@ -21,5 +21,5 @@ public interface IArticleService extends IService<Article> {
      * @param articleTitle
      * @return
      */
-    IPage<ArticleVO> articleList(IPage<ArticleVO> articlePage, String articleTitle);
+    IPage<ArticleVo> articleList(IPage<ArticleVo> articlePage, String articleTitle);
 }

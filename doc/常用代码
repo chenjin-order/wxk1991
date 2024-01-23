@@ -56,3 +56,28 @@ jQuery 获取 radio 选中的值
             </div>
         </div>
     </div>
+
+
+
+    function getNewData(pageNumber) {
+            if (!checkNotNull(pageNumber)) {
+                pageNumber = 1;
+            }
+            window.location.href = "/wxk1991/user/list?pageNumber=" + pageNumber + "<#if (userName?? && userName?length>0)>&userName=${userName!}</#if>";
+        }
+
+        function renderPage() {
+            let renderPageNumber = $("#renderPageNumber").val();
+            if (!checkNotNull(renderPageNumber)) {
+                new $.zui.Messager('请输入跳转的页码', {
+                    type: 'warning',
+                    placement: 'center'
+                }).show();
+                return;
+            }
+            let totalPage = '${userPage.totalPage}';
+            if (parseInt(renderPageNumber) > parseInt(totalPage)) {
+                renderPageNumber = totalPage;
+            }
+            getNewData(renderPageNumber);
+        }

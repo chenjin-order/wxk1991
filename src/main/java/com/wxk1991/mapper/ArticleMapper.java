@@ -3,7 +3,7 @@ package com.wxk1991.mapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.wxk1991.entity.Article;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.wxk1991.vo.ArticleVO;
+import com.wxk1991.vo.ArticleVo;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -21,5 +21,5 @@ public interface ArticleMapper extends BaseMapper<Article> {
      * @param articleTitle
      * @return
      */
-    IPage<ArticleVO> articleList(IPage<ArticleVO> articlePage, @Param("articleTitle") String articleTitle);
+    IPage<ArticleVo> articleList(IPage<ArticleVo> articlePage, @Param("articleTitle") String articleTitle);
 }

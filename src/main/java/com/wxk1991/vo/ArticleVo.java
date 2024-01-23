@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class ArticleVO {
+public class ArticleVo {
     /**
      * 文章id
      */
@@ -33,7 +33,7 @@ public class ArticleVO {
     /**
      * 文章添加时间
      */
-    private Date articleAadTime;
+    private Date articleAddTime;
 
     /**
      * 点赞次数

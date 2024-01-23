@@ -48,7 +48,7 @@ public class Article implements Serializable {
     /**
      * 文章添加时间
      */
-    private Date articleAadTime;
+    private Date articleAddTime;
 
     /**
      * 文章内容

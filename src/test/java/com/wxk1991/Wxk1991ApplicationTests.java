@@ -72,11 +72,11 @@ class Wxk1991ApplicationTests {
                 article.setArticleTypeId(articleType.getArticleTypeId());
                 article.setUserId(users.get(ThreadLocalRandom.current().nextInt(users.size())).getUserId());
                 article.setArticleTitle("文章标题" + i);
-                article.setArticleAadTime(DateUtil.date());
+                article.setArticleAddTime(DateUtil.date());
                 article.setArticleContext("文章内容" + ThreadLocalRandom.current().nextInt(1000));
                 article.setArticleGoodNumber(0);
                 article.setArticleLookNumber(0);
-                article.setArticleColletionNumber(0);
+                article.setArticleCollectionNumber(0);
                 arrayList.add(article);
             }
         }

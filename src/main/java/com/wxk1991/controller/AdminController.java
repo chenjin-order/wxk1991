@@ -20,7 +20,7 @@ import com.wxk1991.service.*;
 import com.wxk1991.utils.CommonPage;
 import com.wxk1991.utils.CommonResult;
 import com.wxk1991.vo.ArticleTypeVo;
-import com.wxk1991.vo.ArticleVO;
+import com.wxk1991.vo.ArticleVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -295,15 +295,32 @@ public class AdminController {
 
     /**
      * 文章列表
+     *
      * @param articlePagDto
      * @return
      */
     @GetMapping("/article/list")
-    public String articleList(@Valid ArticlePageDto articlePagDto,Model model){
-
-        IPage<ArticleVO> articlePage = new Page<>(articlePagDto.getPageNumber(), 20);
-        IPage<ArticleVO> articleIPage = articleService.articleList(articlePage,articlePagDto.getArticleTitle());
-        model.addAttribute("articleIPage", CommonPage.restPage(articleIPage));
+    public String articleList(@Valid ArticlePageDto articlePagDto, Model model) {
+        IPage<ArticleVo> articleVoPage = new Page<>(articlePagDto.getPageNumber(), 20);
+        IPage<ArticleVo> articleVoIPage = articleService.articleList(articleVoPage, articlePagDto.getArticleTitle());
+        model.addAttribute("articleVoIPage", CommonPage.restPage(articleVoIPage));
+        if (StrUtil.isNotBlank(articlePagDto.getArticleTitle())){
+            model.addAttribute("articleTitle", articlePagDto.getArticleTitle());
+        }
         return "/admin/articleList";
+    }
+
+    /**
+     * 文章删除
+     * @param articleId
+     * @return
+     */
+    @PostMapping("/article/del")
+    @ResponseBody
+    public CommonResult articleDel(String articleId) {
+        if (articleService.removeById(articleId)){
+            return CommonResult.success("删除成功");
+        }
+        return CommonResult.failed("删除失败");
     }
 }
