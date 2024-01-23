@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wxk1991.mapper.ArticleMapper">
+    <select id="articleList" resultType="com.wxk1991.vo.ArticleVO">
+        SELECT
+            art.article_id,
+            art.article_type_id,
+            u.user_id,
+            u.user_name,
+            art.article_title,
+            art.article_aad_time,
+            art.article_good_number,
+            art.article_look_number,
+            art.article_collection_number,
+            artt.article_type_name
+        FROM
+            article art
+                LEFT JOIN article_type AS artt ON art.article_type_id = artt.article_type_id
+                LEFT JOIN USER u ON u.user_id = art.user_id
+        ORDER BY
+            art.article_aad_time DESC
+    </select>
+</mapper>

@@ -1,0 +1,58 @@
+jQuery 选择 根据 单选框的 value来选择中:
+        $(":radio[name='userFrozen'][value='" + userFrozen + "']").prop("checked", "checked");
+jQuery 获取 radio 选中的值
+        let userFrozen = $("input[name='userFrozen']:checked").val();
+
+
+分页：
+    <div class="panel">
+        <div class="panel-body" style="padding: 0;">
+            <div class="col-sm-12" style="padding: 0;text-align: center;">
+                <ul class="pager" style="margin-top: 10px;margin-bottom: 10px;">
+                    <li class="previous" onclick="getNewData(1)">
+                        <a href="javascript:void(0)"><i class="icon-step-backward"></i></a>
+                    </li>
+
+                    <#if userPage.pageNumber lte 1>
+                        <li class="previous disabled">
+                            <a href="javascript:void(0)"><i class="icon-chevron-left"></i></a>
+                        </li>
+                    <#else>
+                        <li class="previous" onclick="getNewData('${userPage.pageNumber-1}')">
+                            <a href="javascript:void(0)"><i class="icon-chevron-left"></i></a>
+                        </li>
+                    </#if>
+                    <li>
+                        <a href="javascript:void(0)" class="btn">
+                            ${userPage.pageNumber}页/共${userPage.totalPage}</a>
+                    </li>
+                    <#if userPage.pageNumber gte userPage.totalPage>
+                        <li class="next disabled">
+                            <a href="javascript:void(0)"><i class="icon-chevron-right"></i></a>
+                        </li>
+                    <#else>
+                        <li class="next" onclick="getNewData('${userPage.pageNumber+1}')">
+                            <a href="javascript:void(0)"><i class="icon-chevron-right"></i></a>
+                        </li>
+                    </#if>
+                    <li class="previous" onclick="getNewData('${userPage.totalPage}')">
+                        <a href="javascript:void(0)"><i class="icon-step-forward"></i></a>
+                    </li>
+
+
+                    <li class="next">
+                        <a href="javascript:void(0)">
+                            <input type="number" id="renderPageNumber" maxlength="5"
+                                   style="width:50px;height: 20px;" oninput="value=value.replace(/[^\d]/g,'')">
+                        </a>
+                    </li>
+                    <li class="next">
+                        <a href="javascript:void(0)" onclick="renderPage()"
+                           style="padding-left: 2px;padding-right: 2px;">
+                            跳转
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
