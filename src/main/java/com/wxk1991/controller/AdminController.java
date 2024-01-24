@@ -54,6 +54,15 @@ public class AdminController {
     @Autowired
     private IUserService userService;
 
+    @Autowired
+    private ILinkService linkService;
+
+    @Autowired
+    private IAdTypeService adTypeService;
+
+    @Autowired
+    private IAdService adService;
+
     @GetMapping("/")
     public String adminIndex(Model model) {
 
@@ -304,7 +313,7 @@ public class AdminController {
         IPage<ArticleVo> articleVoPage = new Page<>(articlePagDto.getPageNumber(), 20);
         IPage<ArticleVo> articleVoIPage = articleService.articleList(articleVoPage, articlePagDto.getArticleTitle());
         model.addAttribute("articleVoIPage", CommonPage.restPage(articleVoIPage));
-        if (StrUtil.isNotBlank(articlePagDto.getArticleTitle())){
+        if (StrUtil.isNotBlank(articlePagDto.getArticleTitle())) {
             model.addAttribute("articleTitle", articlePagDto.getArticleTitle());
         }
         return "/admin/articleList";
@@ -312,13 +321,64 @@ public class AdminController {
 
     /**
      * 文章删除
+     *
      * @param articleId
      * @return
      */
     @PostMapping("/article/del")
     @ResponseBody
     public CommonResult articleDel(String articleId) {
-        if (articleService.removeById(articleId)){
+        if (articleService.removeById(articleId)) {
+            return CommonResult.success("删除成功");
+        }
+        return CommonResult.failed("删除失败");
+    }
+
+    /**
+     * 友情链接列表页面
+     *
+     * @return
+     */
+    @GetMapping("/link/list")
+    public String linkList(Model model) {
+        List<Link> linkList = linkService.list(Wrappers.<Link>lambdaQuery().orderByAsc(Link::getLinkSort));
+        model.addAttribute("linkList", linkList);
+        return "admin/linkList";
+    }
+
+    /**
+     * 更新友联
+     *
+     * @param link
+     * @return
+     */
+    @PostMapping("/link/addOrUpdate")
+    @ResponseBody
+    public CommonResult linkAddOrUpdate(Link link) {
+        String linkId = link.getLinkId();
+        if (StrUtil.isBlank(linkId)) {
+            //添加友链
+            link.setLinkAddTime(DateUtil.date());
+            if (linkService.save(link)) {
+                return CommonResult.success("添加成功");
+            }
+            return CommonResult.failed("添加失败");
+        }
+        if (linkService.updateById(link)) {
+            return CommonResult.success("更新成功");
+        }
+        return CommonResult.failed("更新失败");
+    }
+
+    /**
+     * 删除友联
+     * @param linkId
+     * @return
+     */
+    @PostMapping("/link/del")
+    @ResponseBody
+    public CommonResult LinkDel(String linkId) {
+        if (linkService.removeById(linkId)) {
             return CommonResult.success("删除成功");
         }
         return CommonResult.failed("删除失败");

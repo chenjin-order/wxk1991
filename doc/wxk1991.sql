@@ -11,7 +11,7 @@
  Target Server Version : 50743
  File Encoding         : 65001
 
- Date: 20/01/2024 18:54:55
+ Date: 24/01/2024 14:40:15
 */
 
 SET NAMES utf8mb4;
@@ -60,19 +60,37 @@ CREATE TABLE `ad_type`  (
 DROP TABLE IF EXISTS `article`;
 CREATE TABLE `article`  (
   `article_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '文章id',
+  `article_type_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '文章分类id\r\n',
   `user_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户id',
   `article_title` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '文章标题',
-  `article_aad_time` datetime NULL DEFAULT NULL COMMENT '文章添加时间',
+  `article_add_time` datetime NULL DEFAULT NULL COMMENT '文章添加时间',
   `article_context` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '文章内容',
   `article_good_number` int(11) NULL DEFAULT NULL COMMENT '点赞次数',
   `article_look_number` int(11) NULL DEFAULT NULL COMMENT '观看次数',
-  `article_colletion_number` int(11) NULL DEFAULT NULL COMMENT '收藏次数',
+  `article_collection_number` int(11) NULL DEFAULT NULL COMMENT '收藏次数',
   PRIMARY KEY (`article_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of article
 -- ----------------------------
+INSERT INTO `article` VALUES ('0d5729e249173718f9c50b6bce5a3981', '357a5f3a65c1412bea27fa4488a063c4', '8fef105993cc0c629d78622def1c1bba', '文章标题5', '2024-01-21 20:48:49', '文章内容544', 0, 0, 0);
+INSERT INTO `article` VALUES ('22c9f5a964a0245238251d14a947b71b', '8113ef8e1651d38644a04b0cdb8e850e', '4580dadc5e5168d194afdaa1166c1061', '文章标题3', '2024-01-21 20:48:49', '文章内容341', 0, 0, 0);
+INSERT INTO `article` VALUES ('36da0ae83e93566164df52f2e61657bc', '8113ef8e1651d38644a04b0cdb8e850e', 'b298d0b6d3798bd513c09bc3a3206397', '文章标题2', '2024-01-21 20:48:49', '文章内容588', 0, 0, 0);
+INSERT INTO `article` VALUES ('4826620cfbc74847a57376122a3d4ecf', '357a5f3a65c1412bea27fa4488a063c4', '7fdf8f73da2481adf9b55898ef31ce69', '文章标题4', '2024-01-21 20:48:49', '文章内容314', 0, 0, 0);
+INSERT INTO `article` VALUES ('4bddad0c40de15f1b40c620df9b04969', '357a5f3a65c1412bea27fa4488a063c4', 'fad50e019b9acef817072a0a270636c1', '文章标题3', '2024-01-21 20:48:49', '文章内容551', 0, 0, 0);
+INSERT INTO `article` VALUES ('5268faafd4d28316181686e7f9f86446', '38a434ca8372e8c18d3e4be0f7e63b8f', '2e0a915053409cbf82ff371111c541aa', '文章标题4', '2024-01-21 20:48:49', '文章内容524', 0, 0, 0);
+INSERT INTO `article` VALUES ('6a98d271f3c136d00939ce171f6e09e7', '8113ef8e1651d38644a04b0cdb8e850e', 'd8e3728e608af82c7186a00a93f9eade', '文章标题5', '2024-01-21 20:48:49', '文章内容123', 0, 0, 0);
+INSERT INTO `article` VALUES ('705f376e26085b358cd4646f8621e184', '357a5f3a65c1412bea27fa4488a063c4', 'a413077d1e2052ff5aa26a77dd1ac3be', '文章标题2', '2024-01-21 20:48:49', '文章内容626', 0, 0, 0);
+INSERT INTO `article` VALUES ('7d494ce2cb5bbc5ae9340979017a89fd', '8113ef8e1651d38644a04b0cdb8e850e', '5d6c07229e668ef2675a521410306e5c', '文章标题0', '2024-01-21 20:48:49', '文章内容668', 0, 0, 0);
+INSERT INTO `article` VALUES ('82a40a5ac98b1e5c899d92d5506b86dd', '38a434ca8372e8c18d3e4be0f7e63b8f', '633bdf3c5bf2c175e90e47ff8e747dd3', '文章标题0', '2024-01-21 20:48:49', '文章内容369', 0, 0, 0);
+INSERT INTO `article` VALUES ('84580ae24dd4ddce9fee45fcf00793e8', '38a434ca8372e8c18d3e4be0f7e63b8f', '0f09e1209d241e680c4f53369cb7094a', '文章标题5', '2024-01-21 20:48:49', '文章内容785', 0, 0, 0);
+INSERT INTO `article` VALUES ('9037027db31ff068be1ced60ecd62ef0', '8113ef8e1651d38644a04b0cdb8e850e', 'cf4e6b564b448c9c145c789f75dd0a6c', '文章标题1', '2024-01-21 20:48:49', '文章内容591', 0, 0, 0);
+INSERT INTO `article` VALUES ('b5e486cb51ad44120f3ae820f04ef997', '357a5f3a65c1412bea27fa4488a063c4', '48ff0506f4b08896baa5a56760058863', '文章标题0', '2024-01-21 20:48:49', '文章内容683', 0, 0, 0);
+INSERT INTO `article` VALUES ('baa6e31eaa6b9bd04d2e58f95228205f', '38a434ca8372e8c18d3e4be0f7e63b8f', '853d0c3b76943549b574cb61d7b0b3cc', '文章标题3', '2024-01-21 20:48:49', '文章内容203', 0, 0, 0);
+INSERT INTO `article` VALUES ('be47e4734180f4e6730b25045674f55d', '38a434ca8372e8c18d3e4be0f7e63b8f', 'c6ce5ec53b7c6e8acd98d3f2f7b35e00', '文章标题2', '2024-01-21 20:48:49', '文章内容728', 0, 0, 0);
+INSERT INTO `article` VALUES ('c94ba49fbffb335c699d2aa9d8ba6945', '38a434ca8372e8c18d3e4be0f7e63b8f', '9228d58f08cbd72a1caf2f588a3bd82c', '文章标题1', '2024-01-21 20:48:49', '文章内容599', 0, 0, 0);
+INSERT INTO `article` VALUES ('eae7b60b6bd5ac89115f522bdf6e1289', '357a5f3a65c1412bea27fa4488a063c4', '9228d58f08cbd72a1caf2f588a3bd82c', '文章标题1', '2024-01-21 20:48:49', '文章内容446', 0, 0, 0);
 
 -- ----------------------------
 -- Table structure for article_tag
@@ -88,6 +106,17 @@ CREATE TABLE `article_tag`  (
 -- ----------------------------
 -- Records of article_tag
 -- ----------------------------
+INSERT INTO `article_tag` VALUES ('01185cbfb913e62cde3879ced4dd1319', '文章标签3', '2024-01-21 20:48:49');
+INSERT INTO `article_tag` VALUES ('1e77d0d779bcdb541f0bb923cd1ebbe4', '文章标签6', '2024-01-21 20:48:49');
+INSERT INTO `article_tag` VALUES ('35aaecf96dbedc0458d74af215a514ca', '文章标签2', '2024-01-21 20:48:49');
+INSERT INTO `article_tag` VALUES ('603727cfb68c59dd496a5f55e7d4d3d6', '文章标签4', '2024-01-21 20:48:49');
+INSERT INTO `article_tag` VALUES ('727237b925f379c713754053ca321541', '文章标签5', '2024-01-21 20:48:49');
+INSERT INTO `article_tag` VALUES ('8272262625e148d80dca20ae3308310b', '文章标签9', '2024-01-21 20:48:49');
+INSERT INTO `article_tag` VALUES ('bb79b82b9248f62bd53967094358e99d', '文章标签22', '2024-01-22 20:07:26');
+INSERT INTO `article_tag` VALUES ('c7a5f0f612a75702d1cc39d0968e448e', '文章标签7', '2024-01-21 20:48:49');
+INSERT INTO `article_tag` VALUES ('cc743888715bbe36397e2d7add7951b8', '文章标签8', '2024-01-21 20:48:49');
+INSERT INTO `article_tag` VALUES ('dc19a412adbb3d1cfcffc805649dae7a', '文章标签1', '2024-01-21 20:48:49');
+INSERT INTO `article_tag` VALUES ('efd869bf0a0b843d870e49b3c8375e92', '文章标签0', '2024-01-21 20:48:49');
 
 -- ----------------------------
 -- Table structure for article_tag_list
@@ -95,7 +124,7 @@ CREATE TABLE `article_tag`  (
 DROP TABLE IF EXISTS `article_tag_list`;
 CREATE TABLE `article_tag_list`  (
   `article_tag_list_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '文章对应标签id',
-  `article_id` int(50) NULL DEFAULT NULL COMMENT '文章id',
+  `article_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '文章id',
   `article_tag_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '文章标签id',
   PRIMARY KEY (`article_tag_list_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
@@ -103,6 +132,36 @@ CREATE TABLE `article_tag_list`  (
 -- ----------------------------
 -- Records of article_tag_list
 -- ----------------------------
+INSERT INTO `article_tag_list` VALUES ('0514c815a6873e040d90e4a4563f7652', '9037027db31ff068be1ced60ecd62ef0', 'dc19a412adbb3d1cfcffc805649dae7a');
+INSERT INTO `article_tag_list` VALUES ('05edbc07d60142d61b38dc6ee61f86cf', 'baa6e31eaa6b9bd04d2e58f95228205f', '8272262625e148d80dca20ae3308310b');
+INSERT INTO `article_tag_list` VALUES ('06a62ecd7f0b5ad22d879d9f7fb788ba', '22c9f5a964a0245238251d14a947b71b', '727237b925f379c713754053ca321541');
+INSERT INTO `article_tag_list` VALUES ('280eaf30bc6c5dfb122177c2e2bc91f3', 'baa6e31eaa6b9bd04d2e58f95228205f', '35aaecf96dbedc0458d74af215a514ca');
+INSERT INTO `article_tag_list` VALUES ('29fc701871f626232f9c28c3584be815', '82a40a5ac98b1e5c899d92d5506b86dd', '727237b925f379c713754053ca321541');
+INSERT INTO `article_tag_list` VALUES ('2c5aaf36535073cb78cc067ea577d61a', 'eae7b60b6bd5ac89115f522bdf6e1289', '603727cfb68c59dd496a5f55e7d4d3d6');
+INSERT INTO `article_tag_list` VALUES ('461dd6934b351be624c9b90a06c14694', '4bddad0c40de15f1b40c620df9b04969', '1e77d0d779bcdb541f0bb923cd1ebbe4');
+INSERT INTO `article_tag_list` VALUES ('4ac42a9e70b6abcd977dd38a00ae4333', '82a40a5ac98b1e5c899d92d5506b86dd', '1e77d0d779bcdb541f0bb923cd1ebbe4');
+INSERT INTO `article_tag_list` VALUES ('4feea6cac70c8120a679fb1e0bd20085', '7d494ce2cb5bbc5ae9340979017a89fd', '01185cbfb913e62cde3879ced4dd1319');
+INSERT INTO `article_tag_list` VALUES ('599818c2928b52a1360482bbe532fccb', '36da0ae83e93566164df52f2e61657bc', '01185cbfb913e62cde3879ced4dd1319');
+INSERT INTO `article_tag_list` VALUES ('5af06690a475e1fe34e86fe3a8d2458b', '705f376e26085b358cd4646f8621e184', 'dc19a412adbb3d1cfcffc805649dae7a');
+INSERT INTO `article_tag_list` VALUES ('5fac3cce8ed355facbc15e34ce362259', '36da0ae83e93566164df52f2e61657bc', '35aaecf96dbedc0458d74af215a514ca');
+INSERT INTO `article_tag_list` VALUES ('75bb63c81a9e412ebbb7002fca321918', 'be47e4734180f4e6730b25045674f55d', 'efd869bf0a0b843d870e49b3c8375e92');
+INSERT INTO `article_tag_list` VALUES ('777a78236d58fd7cb0788dc1ae91871e', '22c9f5a964a0245238251d14a947b71b', 'efd869bf0a0b843d870e49b3c8375e92');
+INSERT INTO `article_tag_list` VALUES ('79e436c0c503e4110c8a04fcde136d9b', '705f376e26085b358cd4646f8621e184', 'c7a5f0f612a75702d1cc39d0968e448e');
+INSERT INTO `article_tag_list` VALUES ('7f67dbb434e389ca140dd4ea2fea9768', 'c94ba49fbffb335c699d2aa9d8ba6945', '01185cbfb913e62cde3879ced4dd1319');
+INSERT INTO `article_tag_list` VALUES ('80713989a594406d301dfe84d2fac051', 'be47e4734180f4e6730b25045674f55d', '727237b925f379c713754053ca321541');
+INSERT INTO `article_tag_list` VALUES ('9193a3672ba8099b450979d46b530140', '081a59f26e2d2a7791da70a812e29f38', '603727cfb68c59dd496a5f55e7d4d3d6');
+INSERT INTO `article_tag_list` VALUES ('988b3d11a596525fbd2573378ab7ba0d', 'eae7b60b6bd5ac89115f522bdf6e1289', '1e77d0d779bcdb541f0bb923cd1ebbe4');
+INSERT INTO `article_tag_list` VALUES ('9ed60dd6713f01dc0a700ac7cbc53342', '705f376e26085b358cd4646f8621e184', '8272262625e148d80dca20ae3308310b');
+INSERT INTO `article_tag_list` VALUES ('baaadfae5dfea3c2556e8f2cb7635014', '6a98d271f3c136d00939ce171f6e09e7', 'efd869bf0a0b843d870e49b3c8375e92');
+INSERT INTO `article_tag_list` VALUES ('bcb353528cddb5d60553d255593805c5', 'be47e4734180f4e6730b25045674f55d', '603727cfb68c59dd496a5f55e7d4d3d6');
+INSERT INTO `article_tag_list` VALUES ('bdd113d190c42dd726e6acc38ae98a87', '4bddad0c40de15f1b40c620df9b04969', 'dc19a412adbb3d1cfcffc805649dae7a');
+INSERT INTO `article_tag_list` VALUES ('be81f089c5acea527e0483fcecb55e68', '9037027db31ff068be1ced60ecd62ef0', 'cc743888715bbe36397e2d7add7951b8');
+INSERT INTO `article_tag_list` VALUES ('c92978264d4611f98f239961c66612ef', '6a98d271f3c136d00939ce171f6e09e7', 'c7a5f0f612a75702d1cc39d0968e448e');
+INSERT INTO `article_tag_list` VALUES ('ccb8ba98ba3c8c5d6645bb6c0f1d37c9', '22c9f5a964a0245238251d14a947b71b', 'cc743888715bbe36397e2d7add7951b8');
+INSERT INTO `article_tag_list` VALUES ('e36817f0db6a6ea2dd9172d229e753b0', 'c94ba49fbffb335c699d2aa9d8ba6945', 'cc743888715bbe36397e2d7add7951b8');
+INSERT INTO `article_tag_list` VALUES ('e68c9cae2374b181b912b5cdf9f09403', 'be47e4734180f4e6730b25045674f55d', '35aaecf96dbedc0458d74af215a514ca');
+INSERT INTO `article_tag_list` VALUES ('edac19d22e7818bc9bf5ebb68a1683cf', 'b5e486cb51ad44120f3ae820f04ef997', '8272262625e148d80dca20ae3308310b');
+INSERT INTO `article_tag_list` VALUES ('fc451c585cc8dd9ff2ce46396b37eb25', '4bddad0c40de15f1b40c620df9b04969', 'c7a5f0f612a75702d1cc39d0968e448e');
 
 -- ----------------------------
 -- Table structure for article_type
@@ -111,7 +170,7 @@ DROP TABLE IF EXISTS `article_type`;
 CREATE TABLE `article_type`  (
   `article_type_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '文章分类id',
   `article_type_name` varchar(35) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '文章分类名称',
-  `article_type_sort` int(11) NULL DEFAULT NULL COMMENT '文章分类拍戏。越小越靠前',
+  `article_type_sort` int(11) NULL DEFAULT NULL COMMENT '文章分类排序。越小越靠前',
   `article_type_add_time` datetime NULL DEFAULT NULL COMMENT '添加时间',
   PRIMARY KEY (`article_type_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文章分类1' ROW_FORMAT = Dynamic;
@@ -119,6 +178,10 @@ CREATE TABLE `article_type`  (
 -- ----------------------------
 -- Records of article_type
 -- ----------------------------
+INSERT INTO `article_type` VALUES ('1b58f56c61decdf9cc1d40cd46a481b3', 'c++类型', 21, '2024-01-21 21:41:52');
+INSERT INTO `article_type` VALUES ('357a5f3a65c1412bea27fa4488a063c4', '文章分类2', 8, '2024-01-21 20:59:18');
+INSERT INTO `article_type` VALUES ('38a434ca8372e8c18d3e4be0f7e63b8f', '文章分类0', 101, '2024-01-21 20:48:48');
+INSERT INTO `article_type` VALUES ('8113ef8e1651d38644a04b0cdb8e850e', '文章分类1', 10, '2024-01-21 20:48:48');
 
 -- ----------------------------
 -- Table structure for comment
@@ -187,7 +250,7 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('01722e6ff75ff127d743a49953924206', '46uName', 'e10adc3949ba59abbe56e057f20f883e', 0, '2024-01-19 18:18:56');
+INSERT INTO `user` VALUES ('01722e6ff75ff127d743a49953924206', '46uName', '1acfa27190b6f9f9d375d9a75bee73a2', 0, '2024-01-19 18:18:56');
 INSERT INTO `user` VALUES ('01c0815712bf46b815c286927407694c', '38uName', 'e10adc3949ba59abbe56e057f20f883e', 0, '2024-01-19 18:18:56');
 INSERT INTO `user` VALUES ('0b0d2c30fc37f5f10ff762559a0aa640', '36uName', 'e10adc3949ba59abbe56e057f20f883e', 0, '2024-01-19 21:06:34');
 INSERT INTO `user` VALUES ('0bb8c74d5b16a2f23242263a85ddffbe', '28uName', 'e10adc3949ba59abbe56e057f20f883e', 0, '2024-01-19 21:06:34');
@@ -212,7 +275,7 @@ INSERT INTO `user` VALUES ('31073e72101625d1a4a91668e4e8727a', '11uName', 'e10ad
 INSERT INTO `user` VALUES ('37f1673984ac09650af03b22028023a7', '13uName', 'e10adc3949ba59abbe56e057f20f883e', 0, '2024-01-19 18:18:56');
 INSERT INTO `user` VALUES ('3ed40a24b4bb94fc5055c1203fce428c', '33uName', 'e10adc3949ba59abbe56e057f20f883e', 0, '2024-01-19 21:06:34');
 INSERT INTO `user` VALUES ('3f489ce369fad140603a2a1f483308dd', '44uName', 'e10adc3949ba59abbe56e057f20f883e', 0, '2024-01-19 18:18:56');
-INSERT INTO `user` VALUES ('429b3500a3108b4e33b8ef9dda0cbd25', '45uName', 'e10adc3949ba59abbe56e057f20f883e', 0, '2024-01-19 18:18:56');
+INSERT INTO `user` VALUES ('429b3500a3108b4e33b8ef9dda0cbd25', '45uName', '', 1, '2024-01-19 18:18:56');
 INSERT INTO `user` VALUES ('4580dadc5e5168d194afdaa1166c1061', '20uName', 'e10adc3949ba59abbe56e057f20f883e', 0, '2024-01-19 18:18:56');
 INSERT INTO `user` VALUES ('48d2a5cb40f4d69602ff9e9ae1d13fcc', '2uName', 'e10adc3949ba59abbe56e057f20f883e', 0, '2024-01-19 18:18:56');
 INSERT INTO `user` VALUES ('48ff0506f4b08896baa5a56760058863', '14uName', 'e10adc3949ba59abbe56e057f20f883e', 0, '2024-01-19 18:18:56');
@@ -232,7 +295,6 @@ INSERT INTO `user` VALUES ('68f5d2a25abc9140a3bda50ae65667e1', '6uName', 'e10adc
 INSERT INTO `user` VALUES ('697e21d8f3306c9c32080e052ab54c24', '15uName', 'e10adc3949ba59abbe56e057f20f883e', 1, '2024-01-19 18:18:56');
 INSERT INTO `user` VALUES ('761e15807619857ef97c3bab3e6306a8', '5uName', 'e10adc3949ba59abbe56e057f20f883e', 0, '2024-01-19 18:18:56');
 INSERT INTO `user` VALUES ('7b8b0606834882d258383a0b1b7b69be', '1uName', 'e10adc3949ba59abbe56e057f20f883e', 0, '2024-01-19 18:18:56');
-INSERT INTO `user` VALUES ('7ba46c56a83da109e5943bd90dab80c9', '46uName', 'e10adc3949ba59abbe56e057f20f883e', 0, '2024-01-19 21:06:34');
 INSERT INTO `user` VALUES ('7c3df992cc50752b89053994d910b6dc', '27uName', 'e10adc3949ba59abbe56e057f20f883e', 0, '2024-01-19 18:18:56');
 INSERT INTO `user` VALUES ('7fdf8f73da2481adf9b55898ef31ce69', '37uName', 'e10adc3949ba59abbe56e057f20f883e', 0, '2024-01-19 21:06:34');
 INSERT INTO `user` VALUES ('818f92c4e26e486a134947c5159c339d', '48uName', 'e10adc3949ba59abbe56e057f20f883e', 0, '2024-01-19 18:18:56');

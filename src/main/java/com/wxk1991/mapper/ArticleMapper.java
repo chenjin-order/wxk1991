@@ -17,9 +17,6 @@ import org.apache.ibatis.annotations.Param;
 public interface ArticleMapper extends BaseMapper<Article> {
     /**
      * 文章列表
-     * @param articlePage
-     * @param articleTitle
-     * @return
      */
     IPage<ArticleVo> articleList(IPage<ArticleVo> articlePage, @Param("articleTitle") String articleTitle);
 }

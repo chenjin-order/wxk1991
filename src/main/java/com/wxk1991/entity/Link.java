@@ -2,6 +2,7 @@ package com.wxk1991.entity;
 
 import java.time.LocalDateTime;
 import java.io.Serializable;
+import java.util.Date;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
@@ -43,11 +44,15 @@ public class Link implements Serializable {
      * 友情链接logo
      */
     private String linkLogoUrl;
+    /**
+     * 友情链接排序，越小越靠前
+     */
+    private Integer linkSort;
 
     /**
      * 添加友情链接的时间
      */
-    private LocalDateTime linkAddTime;
+    private Date linkAddTime;
 
 
 }

@@ -28,8 +28,8 @@
                             <li><a href="/wxk1991/article/list">文章管理</a></li>
                         </ul>
                     </li>
-                    <li><a href="/wxk1991/link"><i class="icon icon-smile"></i>友情链接</a></li>
-                    <li><a href="/wxk1991/ad"><i class="icon icon-dollar"></i>广告管理</a></li>
+                    <li><a href="/wxk1991/link/list"><i class="icon icon-smile"></i>友情链接</a></li>
+                    <li><a href="/wxk1991/ad/list"><i class="icon icon-dollar"></i>广告管理</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="your/nice/url"><i class="icon icon-signout"></i>退出登录</a></li>

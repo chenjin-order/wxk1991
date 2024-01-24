@@ -17,9 +17,6 @@ public interface IArticleService extends IService<Article> {
 
     /**
      * 文章列表
-     * @param articlePage
-     * @param articleTitle
-     * @return
      */
     IPage<ArticleVo> articleList(IPage<ArticleVo> articlePage, String articleTitle);
 }

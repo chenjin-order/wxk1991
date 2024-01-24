@@ -24,9 +24,6 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     private ArticleMapper articleMapper;
     /**
      * 文章列表
-     * @param articlePage
-     * @param articleTitle
-     * @return
      */
     @Override
     public IPage<ArticleVo> articleList(IPage<ArticleVo> articlePage, String articleTitle) {

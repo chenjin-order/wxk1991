@@ -2,6 +2,7 @@ package com.wxk1991.entity;
 
 import java.time.LocalDateTime;
 import java.io.Serializable;
+import java.util.Date;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
@@ -47,7 +48,7 @@ public class AdType implements Serializable {
     /**
      * 广告类型添加时间
      */
-    private LocalDateTime adTypeAddTime;
+    private Date adTypeAddTime;
 
 
 }
