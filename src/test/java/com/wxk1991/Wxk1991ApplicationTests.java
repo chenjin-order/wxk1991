@@ -158,7 +158,7 @@ class Wxk1991ApplicationTests {
         Ad ad1 = new Ad();
         ad1.setAdTypeId(adType1.getAdTypeId());
         ad1.setAdTitle("广告1");
-        ad1.setAdUrl("https://imgtu.com/i/TUCl5j");
+        ad1.setAdImgUrl("https://imgtu.com/i/TUCl5j");
         ad1.setAdSort(10);
         ad1.setAdBeginTime(DateUtil.date());
         ad1.setAdEndTime(DateUtil.parseDateTime("2022-05-05 12:12:12"));
@@ -167,7 +167,7 @@ class Wxk1991ApplicationTests {
         Ad ad2 = new Ad();
         ad2.setAdTypeId(adType1.getAdTypeId());
         ad2.setAdTitle("广告2");
-        ad2.setAdUrl("https://imgtu.com/i/TUCuqS");
+        ad2.setAdImgUrl("https://imgtu.com/i/TUCuqS");
         ad2.setAdSort(10);
         ad2.setAdBeginTime(DateUtil.date());
         ad2.setAdEndTime(DateUtil.parseDateTime("2022-05-05 12:12:12"));
@@ -176,7 +176,7 @@ class Wxk1991ApplicationTests {
         Ad ad3 = new Ad();
         ad3.setAdTypeId(adType2.getAdTypeId());
         ad3.setAdTitle("广告3");
-        ad3.setAdUrl("https://imgtu.com/i/TUCMVg");
+        ad3.setAdImgUrl("https://imgtu.com/i/TUCMVg");
         ad3.setAdSort(10);
         ad3.setAdBeginTime(DateUtil.date());
         ad3.setAdEndTime(DateUtil.parseDateTime("2022-05-05 12:12:12"));
@@ -185,7 +185,7 @@ class Wxk1991ApplicationTests {
         Ad ad4 = new Ad();
         ad4.setAdTypeId(adType2.getAdTypeId());
         ad4.setAdTitle("广告4");
-        ad4.setAdUrl("https://imgtu.com/i/TUCQaQ");
+        ad4.setAdImgUrl("https://imgtu.com/i/TUCQaQ");
         ad4.setAdSort(10);
         ad4.setAdBeginTime(DateUtil.date());
         ad4.setAdEndTime(DateUtil.parseDateTime("2022-05-05 12:12:12"));

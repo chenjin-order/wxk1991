@@ -36,7 +36,7 @@ public class AdType implements Serializable {
     private String adTypeTitle;
 
     /**
-     * 广告标识（首页顶部广告，轮播图广告，文章详情广告）
+     * 广告类型标识（首页顶部广告，轮播图广告，文章详情广告）
      */
     private String adTypeTag;
 

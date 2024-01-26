@@ -21,6 +21,7 @@ import com.wxk1991.utils.CommonPage;
 import com.wxk1991.utils.CommonResult;
 import com.wxk1991.vo.ArticleTypeVo;
 import com.wxk1991.vo.ArticleVo;
+import com.wxk1991.vo.AdVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -372,6 +373,7 @@ public class AdminController {
 
     /**
      * 删除友联
+     *
      * @param linkId
      * @return
      */
@@ -382,5 +384,72 @@ public class AdminController {
             return CommonResult.success("删除成功");
         }
         return CommonResult.failed("删除失败");
+    }
+
+    /**
+     * 广告管理
+     *
+     * @param model
+     * @return
+     */
+    @GetMapping("/ad/list")
+    public String adList(String adTypeId, Model model) {
+        List<AdType> adTypeList = adTypeService.list(Wrappers.<AdType>lambdaQuery()
+                .orderByAsc(AdType::getAdTypeSort));
+        model.addAttribute("adTypeList", adTypeList);
+
+        List<AdVo> adVoList = adService.adList(adTypeId);
+        model.addAttribute("adVoList", adVoList);
+
+        return "/admin/adList";
+    }
+
+    /**
+     * 广告类型管理
+     * @param adType
+     * @return
+     */
+    @PostMapping("/ad/type/addOrUpdate")
+    @ResponseBody
+    public CommonResult adTypeAddOrUpdate(AdType adType) {
+        String adTypeId = adType.getAdTypeId();
+        if (StrUtil.isBlank(adTypeId)) {
+            //添加广告类型
+            adType.setAdTypeAddTime(DateUtil.date());
+            if (adTypeService.save(adType)) {
+                return CommonResult.success("添加成功");
+            }
+            return CommonResult.failed("添加失败");
+        }
+
+        //修改广告类型
+        if (adTypeService.updateById(adType)) {
+            return CommonResult.success("修改成功");
+        }
+        return CommonResult.failed("修改失败");
+    }
+    /**
+     * 广告管理
+     * @param ad
+     * @return
+     */
+    @PostMapping("/ad/addOrUpdate")
+    @ResponseBody
+    public CommonResult adAddOrUpdate(Ad ad) {
+        String adId = ad.getAdId();
+        if (StrUtil.isBlank(adId)) {
+            //添加广告类型
+            ad.setAdAddTime(DateUtil.date());
+            if (adService.save(ad)) {
+                return CommonResult.success("添加成功");
+            }
+            return CommonResult.failed("添加失败");
+        }
+
+        //修改广告类型
+        if (adService.updateById(ad)) {
+            return CommonResult.success("修改成功");
+        }
+        return CommonResult.failed("修改失败");
     }
 }

@@ -1,16 +1,12 @@
 <#include "../import/adminTop.ftl">
-    <style>
-        .link_img{
-            width: 85px;
-        }
-    </style>
+
 <#if linkList?? && linkList?size gt 0 >
     <div class="panel">
         <div class="panel-body">
             <h4>友联数：${(linkList?size)!0}个</h4>
             <hr/>
-            <button onclick="addLink()" class="btn btn-success"><i class="icon icon-plus"></i>添加</button>
-            <table class="table">
+            <button onclick="addLink()" class="btn btn-mini"><i class="icon icon-plus"></i>添加</button>
+            <table class="table" style="margin-top: 10px">
                 <thead>
                 <tr>
                     <th>友联排序</th>
@@ -25,7 +21,7 @@
                     <tr>
                         <td>${(link.linkSort)!}</td>
                         <td>
-                            <img class="link_img img-thumbnail" src="${(link.linkLogoUrl)!'/img/null_logo.png'}" alt="友联logo">
+                            <img class="thumbnail img-thumbnail" src="${(link.linkLogoUrl)!'/img/null_logo.png'}" alt="友联logo">
                         </td>
                         <td>
                             ${(link.linkAddTime)?string("yyyy-MM-dd HH:mm:ss")}

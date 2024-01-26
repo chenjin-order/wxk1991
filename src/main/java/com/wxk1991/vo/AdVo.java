@@ -1,33 +1,15 @@
-package com.wxk1991.entity;
+package com.wxk1991.vo;
 
-import java.time.LocalDateTime;
-import java.io.Serializable;
+import lombok.Data;
+
 import java.util.Date;
 
-import com.baomidou.mybatisplus.annotation.TableId;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
-
-/**
- * <p>
- * 
- * </p>
- *
- * @author jobob
- * @since 2024-01-19
- */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
-public class Ad implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class AdVo {
 
     /**
      * 广告id
      */
-    @TableId("ad_id")
     private String adId;
 
     /**
@@ -69,5 +51,10 @@ public class Ad implements Serializable {
      */
     private Date adAddTime;
 
+    /**
+     * 广告类型名称
+     */
+    private String adTypeTitle;
 
 }
+
