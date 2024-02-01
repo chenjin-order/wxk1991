@@ -10,6 +10,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.wxk1991.dto.ad.AdDto;
 import com.wxk1991.dto.article.ArticlePageDto;
 import com.wxk1991.dto.article.ArticleTypeAddDto;
 import com.wxk1991.dto.article.ArticleTypeUpdateDto;
@@ -17,6 +18,7 @@ import com.wxk1991.dto.user.UserDto;
 import com.wxk1991.dto.user.UserListPageDto;
 import com.wxk1991.entity.*;
 import com.wxk1991.service.*;
+import com.wxk1991.service.impl.*;
 import com.wxk1991.utils.CommonPage;
 import com.wxk1991.utils.CommonResult;
 import com.wxk1991.vo.ArticleTypeVo;
@@ -430,13 +432,18 @@ public class AdminController {
     }
     /**
      * 广告管理
-     * @param ad
+     * @param adDto
      * @return
      */
     @PostMapping("/ad/addOrUpdate")
     @ResponseBody
-    public CommonResult adAddOrUpdate(Ad ad) {
-        String adId = ad.getAdId();
+    public CommonResult adAddOrUpdate(AdDto adDto) {
+        String adId = adDto.getAdId();
+        Ad ad = new Ad();
+        BeanUtils.copyProperties(adDto, ad);
+        ad.setAdBeginTime(DateUtil.parseDateTime(adDto.getAdBeginTime()));
+        ad.setAdEndTime(DateUtil.parseDateTime(adDto.getAdEndTime()));
+
         if (StrUtil.isBlank(adId)) {
             //添加广告类型
             ad.setAdAddTime(DateUtil.date());
@@ -451,5 +458,20 @@ public class AdminController {
             return CommonResult.success("修改成功");
         }
         return CommonResult.failed("修改失败");
+    }
+    /**
+     * 删除广告
+     *
+     * @param adId
+     * @return
+     */
+    @PostMapping("/ad/del")
+    @ResponseBody
+    public CommonResult adDel(String adId) {
+        if (adService.removeById(adId)) {
+
+            return CommonResult.success("删除成功");
+        }
+        return CommonResult.failed("删除失败");
     }
 }

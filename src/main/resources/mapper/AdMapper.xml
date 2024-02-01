@@ -8,6 +8,11 @@
         FROM
             ad
                 LEFT JOIN ad_type ON ad.ad_type_id = ad_type.ad_type_id
+        <where>
+            <if test="adTypeId != null and adTypeId != ''">
+                ad.ad_type_id = #{adTypeId}
+            </if>
+        </where>
         ORDER BY
             ad.ad_sort
     </select>

@@ -1,7 +1,11 @@
 jQuery 选择 根据 单选框的 value来选择中:
         $(":radio[name='userFrozen'][value='" + userFrozen + "']").prop("checked", "checked");
+
 jQuery 获取 radio 选中的值
         let userFrozen = $("input[name='userFrozen']:checked").val();
+
+jQuery 根据值选中对应的项
+        $('#adTypeId option[value="' + adTypeId + '"]').prop("selected", "selected");
 
 
 分页：
@@ -81,3 +85,4 @@ jQuery 获取 radio 选中的值
             }
             getNewData(renderPageNumber);
         }
+

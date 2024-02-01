@@ -4,11 +4,15 @@ function checkNotNull(str) {
     }
     return true;
 }
-
 function zuiMsg(msg){
     new $.zui.Messager(msg, {
         type: 'warning',
         placement: 'center'
     }).show();
-    return;
+}
+function zuiSuccessMsg(msg){
+    new $.zui.Messager(msg, {
+        type: 'success',
+        placement: 'center'
+    }).show();
 }

@@ -133,7 +133,8 @@
         let linkSort = $("#linkSort").val();
 
         if (!checkNotNull(linkTitle) || !checkNotNull(linkUrl) || !checkNotNull(linkLogoUrl) || !checkNotNull(linkSort)) {
-            zuiMsg("数据填写不完整")
+            zuiMsg("数据填写不完整");
+            return;
         }
 
 

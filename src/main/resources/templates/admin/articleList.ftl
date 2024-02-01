@@ -131,10 +131,8 @@
     function delArticle(articleId) {
         if (confirm("是否删除")) {
             if (!checkNotNull(articleId)) {
-                new $.zui.Messager('程序出错，请刷新页面重试', {
-                    type: 'warning',
-                    placement: 'center'
-                }).show();
+                zuiMsg("程序出错，请刷新页面重试");
+
                 return;
             }
             $.post("/wxk1991/article/del", {
@@ -146,10 +144,8 @@
                         location.reload();
                         return;
                     }
-                    new $.zui.Messager(data.message, {
-                        type: 'warning',
-                        placement: 'center'
-                    }).show();
+                    zuiMsg(data.message);
+
                 });
         }
     }
@@ -164,10 +160,7 @@
     function renderPage() {
         let renderPageNumber = $("#renderPageNumber").val();
         if (!checkNotNull(renderPageNumber)) {
-            new $.zui.Messager('请输入跳转的页码', {
-                type: 'warning',
-                placement: 'center'
-            }).show();
+            zuiMsg("请输入跳转的页码!");
             return;
         }
         let totalPage = '${articleVoIPage.totalPage}';

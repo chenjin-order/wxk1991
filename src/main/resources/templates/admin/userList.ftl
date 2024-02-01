@@ -170,10 +170,12 @@
         let userPassword = $("#userPassword").val();
         let userFrozen = $("input[name='userFrozen']:checked").val();
         if (!checkNotNull(userId)) {
-            zuiMsg("程序出错，请刷新页面重试")
+            zuiMsg("程序出错，请刷新页面重试");
+            return;
         }
         if (!checkNotNull(userFrozen)) {
-            zuiMsg("请选择是否冻结用户")
+            zuiMsg("请选择是否冻结用户");
+            return;
         }
         $.post("/wxk1991/user/update", {
                 userId: userId,
