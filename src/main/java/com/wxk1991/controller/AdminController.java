@@ -31,6 +31,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
@@ -41,7 +43,8 @@ import java.util.Objects;
 @RequestMapping("/wxk1991")
 @Slf4j
 public class AdminController {
-
+    @Autowired
+    private IAdminService adminService;
     @Autowired
     private IArticleTypeService articleTypeService;
 
@@ -66,6 +69,67 @@ public class AdminController {
     @Autowired
     private IAdService adService;
 
+    /**
+     * 登陆页面
+     * @return
+     */
+    @GetMapping("/login")
+    public String adminLogin(HttpServletRequest request) {
+        if (Objects.nonNull(request.getSession().getAttribute("admin"))) {
+            return "redirect:/wxk1991/";
+        }
+        return "/admin/adminLogin";
+    }
+
+    /**
+     * 管理员登录
+     * @param request
+     * @param adminName
+     * @param adminPassword
+     * @param verifyCode
+     * @return
+     */
+    @PostMapping("/adminLogin")
+    @ResponseBody
+    public CommonResult adminLogin(HttpServletRequest request,
+                                   String adminName,
+                                   String adminPassword,
+                                   String verifyCode)
+    {
+        HttpSession session = request.getSession();
+        if (StrUtil.isBlank(verifyCode) || !verifyCode.equals(session.getAttribute("circleCaptchaCode"))) {
+            session.removeAttribute("circleCaptchaCode");
+            return CommonResult.failed("验证码不正确");
+        }
+        Admin admin = adminService.getOne(Wrappers.<Admin>lambdaQuery()
+                .eq(Admin::getAdminName, adminName)
+                .eq(Admin::getAdminPassword, SecureUtil.md5(adminName + adminPassword)), false);
+        if (Objects.isNull(admin)) {
+            session.removeAttribute("circleCaptchaCode");
+            return CommonResult.failed("用户名或者密码不正确");
+        }
+        session.setAttribute("admin", admin);
+        return CommonResult.success("登录成功");
+    }
+
+    /**
+     * 管理员退出登录
+     *
+     * @param request
+     * @return
+     */
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request) {
+        request.getSession().removeAttribute("admin");
+        return "redirect:/wxk1991/login";
+    }
+
+    /**
+     * 管理端 - 首页
+     *
+     * @param model
+     * @return
+     */
     @GetMapping("/")
     public String adminIndex(Model model) {
 
@@ -408,6 +472,7 @@ public class AdminController {
 
     /**
      * 广告类型管理
+     *
      * @param adType
      * @return
      */
@@ -430,8 +495,10 @@ public class AdminController {
         }
         return CommonResult.failed("修改失败");
     }
+
     /**
      * 广告管理
+     *
      * @param adDto
      * @return
      */
@@ -459,6 +526,7 @@ public class AdminController {
         }
         return CommonResult.failed("修改失败");
     }
+
     /**
      * 删除广告
      *

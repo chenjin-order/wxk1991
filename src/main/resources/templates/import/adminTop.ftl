@@ -36,7 +36,7 @@
                     <li><a href="/wxk1991/link/list"><i class="icon icon-smile"></i>友情链接</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="your/nice/url"><i class="icon icon-signout"></i>退出登录</a></li>
+                    <li><a href="/wxk1991/logout"><i class="icon icon-signout"></i>退出登录</a></li>
                 </ul>
             </div>
         </div>

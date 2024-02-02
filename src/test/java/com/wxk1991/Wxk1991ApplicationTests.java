@@ -18,6 +18,10 @@ import java.util.concurrent.ThreadLocalRandom;
 @SpringBootTest
 class Wxk1991ApplicationTests {
 
+
+    @Autowired
+    private IAdminService adminService;
+
     @Autowired
     private IUserService userService;
 
@@ -199,4 +203,13 @@ class Wxk1991ApplicationTests {
 
         adService.saveBatch(ads);
     }
+
+    @Test
+    public void addAdminData() {
+        Admin admin = new Admin();
+        admin.setAdminName("admin");
+        admin.setAdminPassword(SecureUtil.md5(admin.getAdminName() + "admin"));
+        adminService.save(admin);
+    }
+
 }
